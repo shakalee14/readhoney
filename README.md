@@ -22,10 +22,7 @@ Creating this web application will provide exposure to:
 - [ ] SQL database
 - [ ] CRUD for book entries 
 - [ ] Incorporate User Feedback 
-
-### Required
-
-- [ ] The artifact produced is properly licensed, preferably with the [MIT license][mit-license].
+- [x] The artifact produced is properly licensed, preferably with the [MIT license][mit-license].
 
 ## Quality Rubric
 
@@ -33,15 +30,9 @@ Creating this web application will provide exposure to:
 - Variables, functions, css classes, etc. are meaningfully named (no comments exist in code to explain functionality - the names serve that function)
 - Functions are small and serve a single purpose
 - Code is well organized into a meaningful file structure
-- Code is reasonably tested with a test suite
 - Interface is user friendly
 
-## Resources
-Model -
-http://ondras.zarovi.cz/sql/demo/
 ---
-
-<!-- LICENSE -->
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>
 <br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
