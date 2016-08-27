@@ -20,8 +20,10 @@ Creating this web application will provide exposure to:
 - [ ] Users can view book details on a book detail page, linked to from the listing or search pages
 - [ ] All code submissions are peer reviewed via GitHub PR by at least two members of the team, and master is always in a stable state (tests passed, site functions)
 - [ ] SQL database
-- [ ] CRUD for book entries 
+- [ ] User Authentication
+- [ ] Only logged in users can CUD for book entries 
 - [ ] Incorporate User Feedback 
+- [ ] Deploy to Heroku
 - [x] The artifact produced is properly licensed, preferably with the [MIT license][mit-license].
 
 ## Quality Rubric
