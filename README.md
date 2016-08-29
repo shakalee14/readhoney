@@ -13,16 +13,26 @@ Creating this web application will provide exposure to:
 * Simple relational database interactions (Create, Read, Update, Delete), with SQL practice
 * Simple server side templating (to render data retrieved from the database)
 
+## User Stories
+
+- JJ as a user can sign up for RH, be directed to the landing page
+- JJ as a user can see the most recent books as "have" or "wanted" by fellow users
+- JJ can click to a tab to see specific books they are looking for and use a search to filter results
+- JJ can add a book to the community book listing database that they either want or have
+- JJ can find contact information for other users
+- Have : books added by users that users are willing to loan to other users in the community
+- Wanted : books added by users that users would like to borrow from other users in the community
+
 ## Specifications
 
 - [ ] Any user can add books into the system
-- [ ] Users can search for books by title OR by author OR by genre, and search results will be presented in a new page
+- [ ] Users can fuzzy search to filter out results
 - [ ] Users can view book details on a book detail page, linked to from the listing or search pages
 - [ ] All code submissions are peer reviewed via GitHub PR by at least two members of the team, and master is always in a stable state (tests passed, site functions)
 - [ ] SQL database
 - [ ] User Authentication
-- [ ] Only logged in users can CUD for book entries 
-- [ ] Incorporate User Feedback 
+- [ ] Only logged in users can CRUD for book entries 
+- [ ] Incorporate Test User Feedback 
 - [ ] Deploy to Heroku
 - [x] The artifact produced is properly licensed, preferably with the [MIT license][mit-license].
 
