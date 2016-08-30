@@ -3,18 +3,14 @@ const router = express.Router();
 
 
 /* GET home page. */
-router.get('/', function(request, response, next) {
-  res.render( 'index', { title: 'Read Honey' } );
-});
-
-router.get('/login', function(request, response, next) {
-  res.render( 'login');
-
-  return;
-  
+router.get('/', (request, response, next) => {
+  response.render( 'index', { title: 'Read Honey' } );
 });
 
 
-
+router.get('/logout', (request, response) => {
+  request.logout()
+  response.redirect( '/' ) 
+});
 
 module.exports = router;

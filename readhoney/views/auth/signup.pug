@@ -1,15 +1,17 @@
 extends ../layouts/layout
 
 block content
-  if message
-    div.error-message = message
+  h2 Signup for Read Honey
 
-   form(method="post")
-      input(type="text", name="email")
-     	
-      input(type="password", name="password")
-   	
-      input(type="submit", value="Submit")
+  if message
+    div.error-message There is a email already associated with this account
+  
+  form(method="post")
+    input(type="text", name="email")
+      
+    input(type="password", name="password")
+    
+    input(type="submit", value="Submit")
 
 
 
