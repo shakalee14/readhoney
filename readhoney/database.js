@@ -33,8 +33,7 @@ const getAllBooksbyId = id => {
 
 const User = {
 	find: (email, encrypted_password) => {
-		return db.oneOrNone(
-			'SELECT * FROM users WHERE email=$1 AND encrypted_password=$2', [email, encrypted_password]
+		return db.oneOrNone('SELECT * FROM users WHERE email=$1', [email]
 	 )
 	},
 
