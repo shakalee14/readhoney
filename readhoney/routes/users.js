@@ -38,7 +38,8 @@ router.post ( '/signup', (request, response, next) => {
 
 
 router.get('/logout', (request, response) => {
-  request.logout()
+
+  delete request.session.User
   response.redirect('/')
   // response.render('/logoutpage')
 })
