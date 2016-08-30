@@ -1,7 +1,30 @@
+
 extends layouts/layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  h1 Welcome to #{title}
+  h3 You ARE HERE
+
+  form(name="logout", method="get", action= "/logout") 
+    input(type="submit", value="logout")
+
+//-     extends ../layouts/layout
+
+//- block content
+//-   h1= title
+//-   h1 Welcome to #{title}
+//-   h3 The Community Bookshare App
+
+//-   div Login
+//-    form(name="login", action="/users/login", method="post")
+//-       input(type="text", name="email")
+      
+//-       input(type="password", name="password")
+    
+//-       input(type="submit", value="Login")
+
+
+
 
 

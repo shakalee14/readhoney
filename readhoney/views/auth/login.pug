@@ -1,1 +1,35 @@
 extends ../layouts/layout
+
+block content
+  h1= title
+  h1 Welcome to #{title}
+  h3 The Community Bookshare App
+
+  if message
+    div.error There is no email associated with this account
+  div Login
+   form(name="login", action="/users/login", method="post")
+      input(type="text", name="email")
+     	
+      input(type="password", name="password")
+   	
+      input(type="submit", value="Login")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
