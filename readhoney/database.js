@@ -1,4 +1,7 @@
-'use strict'
+const databaseName = 'readhoney'
+const connectionString = `postgres://${process.env.USER}@localhost:5432/${databaseName}`
+const pgp = require('pg-promise')()
+const db = pgp(connectionString)
 
 const getBookAuthors = id => {
 	const sql = `
@@ -27,3 +30,29 @@ const getAllBooksbyId = id => {
 	`
 	return db.any(sql, [id])
 }
+
+const User = {
+	find: (email, encrypted_password) => {
+		return db.oneOrNone(
+			'SELECT * FROM users WHERE email=$1 AND encrypted_password=$2', [email, encrypted_password]
+	 )
+	},
+
+	findById: id => db.one('SELECT * FROM users WHERE id=$1', [id]),
+	createOne: (email, encrypted_password) => {
+		return db.one(
+			'INSERT INTO users(email, encrypted_password) VALUES ($1, $2) RETURNING *',
+			[email, encrypted_password]
+		)
+	}
+}
+
+
+
+module.exports = {
+	getBookAuthors,
+	getAllBooksbyId,
+  User
+}
+
+
