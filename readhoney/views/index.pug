@@ -2,6 +2,17 @@ extends layouts/layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  h1 Welcome to #{title}
+  h3 The Community Bookshare App
+
+  div
+   form(name="login", action="/login", method="post")
+      input(type="text", name="email")
+     	
+      input(type="password", name="pass")
+   	
+      input(type="submit", value="login")
+
+
 
 
