@@ -1,8 +1,9 @@
 const express = require('express');
 const logout = require('express-passport-logout');
 const router = express.Router();
+const database = require('../database');
+const passport = require ('../passport');
 
-const passport = require ('../passport')
 const authOptions = {
   successRedirect: '/',
   failureRedirect: '/users/login'

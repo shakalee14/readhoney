@@ -9,6 +9,7 @@ const logout = require('express-passport-logout');
 
 const routes = require('./routes/index');
 const users = require('./routes/users');
+const book = require('./routes/book');
 const passport = require('./passport');
 
 
@@ -33,6 +34,7 @@ app.use(passport.session());
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/book', book);
 
 app.get('/logout', logout());
 
