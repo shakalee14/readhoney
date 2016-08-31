@@ -17,7 +17,6 @@ CREATE TABLE books (
 
 DROP TABLE IF EXISTS wanted_books;
 CREATE TABLE wanted_books (
-  id SERIAL PRIMARY KEY,
   user_id SERIAL,
   book_id SERIAL,
   created_at DATE
@@ -25,153 +24,30 @@ CREATE TABLE wanted_books (
 
 DROP TABLE IF EXISTS owned_books;
 CREATE TABLE owned_books (
-  id SERIAL PRIMARY KEY,
   user_id SERIAL,
   book_id SERIAL,
   created_at DATE
 );
 
-DROP TABLE IF EXISTS book_authors;
-CREATE TABLE book_authors (
-  author_id SERIAL,
-  book_id SERIAL
-);
+INSERT INTO books (title, author, image_url)
+VALUES('Things Fall Apart', 'Chinwe Achibe', 'http://placehold.it/150x275'),
+('Pedagogy of the Oppressed', 'Paolo Freire', 'http://placehold.it/150x275'),
+('Americanah', 'Chimamanda Ngozi Adichie', 'http://placehold.it/150x275'), 
+('Ella Baker Biography', 'Barbara Ransby', 'http://placehold.it/150x275'), 
+('This Bridge called my back', 'Gloria Anzaldua', 'http://placehold.it/150x275'), 
+('Parable of the Sower', 'Octavia Butler', 'http://placehold.it/150x275'), 
+('Sula', 'Toni Morrison', 'http://placehold.it/150x275'), 
+('The Fire Nextime', 'James Baldwin', 'http://placehold.it/150x275'), 
+('Invisible Man', 'Ralph Ellison', 'http://placehold.it/150x275'),
+('Between the World and Me', 'Ta-nehisi Coates', 'http://placehold.it/150x275'),
+('Stone Butch Blues', 'Leslie Feinberg', 'http://placehold.it/150x275'),
+('Women, Race and Class', 'Angela Davis', 'http://placehold.it/150x275');
 
-DROP TABLE IF EXISTS authors;
-CREATE TABLE authors (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(255)
-);
+INSERT INTO users(email, encrypted_password)
+VALUES('jrob',''),('slee',''),('monica','');
 
-INSERT INTO authors (name)
-VALUES('Chinwe Achibe'),
-('Paolo Freire'),
-('Chimamanda Ngozi Adichie'),
-('Barbara Ransby'),
-('Gloria Anzaldua'),
-('Cherrie Moraga'),
-('Octavia Butler'),
-('Toni Morrison'),
-('James Baldwin'),
-('Ralph Ellison'),
-('Ta-nehisi Coates'),
-('Leslie Feinberg'),
-('Angela Davis');
+INSERT INTO owned_books(user_id, book_id, created_at)
+VALUES(1,1,now()),(1,6,now()),(3,9,now()),(3,12,now()),(2,9,now()),(2,12,now());
 
-
-INSERT INTO books (title)
-VALUES('Things Fall Apart'),
-('Pedagogy of the Oppressed'),
-('Americanah'), 
-('Ella Baker Biography'), 
-('This Bridge called my back'), 
-('Parable of the Sower'), 
-('Sula'), 
-('The Fire Nextime'), 
-('Invisible Man'),
-('Between the World and Me'),
-('Stone Butch Blues'),
-('Women, Race and Class');
-
---- join tables start here
-INSERT INTO wanted_books(book_id, user_id)
-  SELECT books.id, users.id FROM books
-  CROSS JOIN users
-  WHERE books.title = 'Between the World and Me'
-  AND authors.name = 'Ta-nehisi Coates';
-
-INSERT INTO wanted_books(book_id, user_id)
-  SELECT books.id, users.id FROM books
-  CROSS JOIN users
-  WHERE books.title = 'Stone Butch Blues'
-  AND authors.name = 'Leslie Feinberg';
-
-INSERT INTO wanted_books(book_id, user_id)
-  SELECT books.id, users.id FROM books
-  CROSS JOIN users
-  WHERE books.title = 'Women, Race and Class'
-  AND authors.name = 'Angela Davis';
-
-
-INSERT INTO book_authors(book_id, author_id)
-  SELECT books.id, authors.id FROM books
-  CROSS JOIN authors
-  WHERE books.title = 'Things Fall Apart'
-  AND authors.name = 'Chinwe Achibe';
-
-INSERT INTO book_authors(book_id, author_id)
-  SELECT books.id, authors.id FROM books
-  CROSS JOIN authors
-  WHERE books.title = 'Pedagogy of the Oppressed'
-  AND authors.name = 'Paolo Freire';
-
-INSERT INTO book_authors(book_id, author_id)
-  SELECT books.id, authors.id FROM books
-  CROSS JOIN authors
-  WHERE books.title = 'Chimamanda Ngozi Adichie'
-  AND authors.name = 'Americanah';
-
-INSERT INTO book_authors(book_id, author_id)
-  SELECT books.id, authors.id FROM books
-  CROSS JOIN authors
-  WHERE books.title = 'This Bridge called my back'
-  AND authors.name = 'Gloria Anzaldua';
-
-INSERT INTO book_authors(book_id, author_id)
-  SELECT books.id, authors.id FROM books
-  CROSS JOIN authors
-  WHERE books.title = 'This Bridge called my back'
-  AND authors.name = 'Cherrie Moraga';
-
-INSERT INTO book_authors(book_id, author_id)
-  SELECT books.id, authors.id FROM books
-  CROSS JOIN authors
-  WHERE books.title = 'Parable of the Sower'
-  AND authors.name = 'Octavia Butler';
-
-INSERT INTO book_authors(book_id, author_id)
-  SELECT books.id, authors.id FROM books
-  CROSS JOIN authors
-  WHERE books.title = 'Sula'
-  AND authors.name = 'Toni Morrison';
-
-INSERT INTO book_authors(book_id, author_id)
-  SELECT books.id, authors.id FROM books
-  CROSS JOIN authors
-  WHERE books.title = 'The Fire Nextime'
-  AND authors.name = 'James Baldwin';
-
-INSERT INTO book_authors(book_id, author_id)
-  SELECT books.id, authors.id FROM books
-  CROSS JOIN authors
-  WHERE books.title = 'Invisible Man'
-  AND authors.name = 'Ralph Ellison';
-
-
-
--- SELECT
---   *
--- FROM
---   todo_list_items
--- WHERE
---     user_id=$1
--- ORDER BY
---   rank ASC
--- ;
---
--- SELECT
---   id
--- FROM
---   users
--- WHERE
---   users.id = todo_list_items.user_id
--- ;
-
--- INSERT INTO todo_list_items VALUES (
---   id PRIMARY KEY NOT NULL
---   user_id INTEGER NOT NULL
---   description VARCHAR(255) NOT NULL
---   note TEXT
---   rank INTEGER
---   due_date DATE
--- );
+INSERT INTO wanted_books(user_id, book_id, created_at)
+VALUES(1,9,now());
