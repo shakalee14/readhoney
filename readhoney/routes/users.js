@@ -1,7 +1,9 @@
 const express = require('express');
+const logout = require('express-passport-logout');
 const router = express.Router();
+const database = require('../database');
+const passport = require ('../passport');
 
-const passport = require ('../passport')
 const authOptions = {
   successRedirect: '/',
   failureRedirect: '/users/login'
@@ -33,14 +35,6 @@ router.post ( '/signup', (request, response, next) => {
     .catch( error => {
       response.render( 'auth/signup', { message: 'That email address is not available'})
     })
-})
-
-
-
-router.get('/logout', (request, response) => {
-  request.logout()
-  response.redirect('/')
-  // response.render('/logoutpage')
 })
 
 module.exports = router;

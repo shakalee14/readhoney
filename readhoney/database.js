@@ -3,33 +3,6 @@ const connectionString = `postgres://${process.env.USER}@localhost:5432/${databa
 const pgp = require('pg-promise')()
 const db = pgp(connectionString)
 
-const getBookAuthors = id => {
-	const sql = `
-		SELECT
-		 *
-		FROM 
-		 book_authors
-		JOIN
-		 authors 
-		ON 
-		 book_authors.author_id=authors.id	
-	`
-	return db.any(sql, [id])
-}
-
-const getAllBooksbyId = id => {
-	const sql = `
-		SELECT
-		 *
-		FROM 
-		 book_authors
-		JOIN
-		 books
-		ON 
-		 book_authors.book_id=books.id	
-	`
-	return db.any(sql, [id])
-}
 
 const User = {
 	find: (email, encrypted_password) => {
@@ -46,12 +19,38 @@ const User = {
 	}
 }
 
+//insert new books
+const createWantedBook = (title, author) => {
+  const sql = `
+    INSERT INTO
+     wanted_books(title, author)
+    VALUES 
+     ($1, $2)
+    RETURNING
+     *
+  `
+  const bookattributes = [title, author]
 
-
-module.exports = {
-	getBookAuthors,
-	getAllBooksbyId,
-  User
+  return db.any(sql, [bookattributes])
 }
 
+const createOwnedBook = (title, author) => {
+  const sql = `
+    INSERT INTO
+     owned_books(title, author)
+    VALUES 
+     ($1, $2)
+    RETURNING
+     *
+  `
+  const bookattributes = [title, author]
+  
+  return db.any(sql, [bookattributes])
+}
+
+module.exports = {
+  User, 
+  createOwnedBook,
+  createWantedBook
+};
 

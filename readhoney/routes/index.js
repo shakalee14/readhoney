@@ -8,9 +8,6 @@ router.get('/', (request, response, next) => {
 });
 
 
-router.get('/logout', (request, response) => {
-  request.logout()
-  response.redirect( '/' ) 
-});
+
 
 module.exports = router;
