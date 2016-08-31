@@ -1,4 +1,5 @@
 const express = require('express');
+const logout = require('express-passport-logout');
 const router = express.Router();
 
 const passport = require ('../passport')
@@ -38,10 +39,12 @@ router.post ( '/signup', (request, response, next) => {
 
 
 router.get('/logout', (request, response) => {
+    request.logout();
+    delete request.session;
+    response.render('/');
+  });
 
-  delete request.session.User
-  response.redirect('/')
   // response.render('/logoutpage')
-})
+
 
 module.exports = router;
