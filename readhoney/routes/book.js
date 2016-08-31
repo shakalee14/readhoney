@@ -3,6 +3,7 @@ const logout = require('express-passport-logout');
 const router = express.Router();
 const database = require('../database')
 const bodyparser = require('body-parser')
+const debug = require('debug')('readhoney:routes:book')
 
 const passport = require ('../passport')
 const authOptions = {
@@ -26,46 +27,21 @@ const authOptions = {
 // });
 
 router.get('/', (request, response, next) => {
-  // if (!request.loggedIn){
-    response.render('book');
-    return;
+  debug( 'User Info', request.user )
 
+  response.render('book');
+})
 
-  Promise.all([
-    database.wanted_books(req.session.userId)
-  ])
-    .then(results => {
-      const wbooks = results[1]
-      const obooks = results[2]
-      res.render('book', {
-        User: User,
-        wbooks: wbooks,
-        obooks: obooks, 
-      });
-    })
-    .catch(error => {
-      res.render('error', {
-        error: error
-      })
-    })
-});
+router.post( '/book', (request, response, next) => {
+  debug( 'User Info', request.user )
 
-router.post('/book', (request, response, next) => {
-  const { title, author } = request.body
-
-  let newWantedBook = request.body.newWantedBook
-  newWantedBook = request.session
+  const { id } = request.user
+  const { title, author, image_url } = request.body
   
-  database.createWantedBook( newWantedBook )
-     .then( newWantedBook => {
-      response.redirect('/')
-     })
-     .catch(error => {
-      response.send('Did not create new wanted book')
-     })
-   })
-
-
-
+  database.createBook( title, author, image_url )
+    .then( book_id => database.createOwnedBook( book_id.id, id ))
+    .then( result => response.redirect( '/' ) )
+    .catch( error => response.send({ message: error.message }))
+})
 
 module.exports = router;
