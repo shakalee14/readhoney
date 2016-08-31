@@ -28,9 +28,9 @@ Creating this web application will provide exposure to:
 - [ ] Any user can add books into the system
 - [ ] Users can fuzzy search to filter out results
 - [ ] Users can view book details on a book detail page, linked to from the listing or search pages
-- [ ] All code submissions are peer reviewed via GitHub PR by at least two members of the team, and master is always in a stable state (tests passed, site functions)
-- [ ] SQL database
-- [ ] User Authentication
+- [X] All code submissions are peer reviewed via GitHub PR by at least two members of the team, and master is always in a stable state (tests passed, site functions)
+- [X] SQL database
+- [X] User Authentication
 - [ ] Only logged in users can CRUD for book entries 
 - [ ] Incorporate Test User Feedback 
 - [ ] Deploy to Heroku
