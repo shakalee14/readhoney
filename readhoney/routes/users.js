@@ -37,16 +37,4 @@ router.post ( '/signup', (request, response, next) => {
     })
 })
 
-
-
-router.get('/logout', (request, response) => {
-    request.logout();
-    delete request.session;
-    response.render('/');
-    
-  });
-
-  // response.render('/logoutpage')
-
-
 module.exports = router;
