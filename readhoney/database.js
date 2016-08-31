@@ -19,42 +19,29 @@ const User = {
   }
 }
 
+const createBook = (title, author, image) => {
+  const sql = `INSERT INTO books( title, author, image_url ) VALUES ( $1, $2, $3 ) RETURNING id`
 
-//create book first
-//then 
-
-//insert new books
-const createWantedBook = (title, author) => {
-  const sql = `
-    INSERT INTO
-     wanted_books(title, author)
-    VALUES 
-     ($1, $2)
-    RETURNING
-     *
-  `
-  const bookattributes = [title, author]
-
-  return db.any(sql, [bookattributes])
+  return db.one( sql, [title, author, image] )
 }
 
-const createOwnedBook = (title, author) => {
-  const sql = `
-    INSERT INTO
-     owned_books(title, author)
-    VALUES 
-     ($1, $2)
-    RETURNING
-     *
-  `
-  const bookattributes = [title, author]
-  
-  return db.any(sql, [bookattributes])
+const createWantedBook = (book_id, user_id) => {
+  const sql = `INSERT INTO wanted_books( book_id, user_id, created_at ) VALUES ( $1, $2, now() ) RETURNING *`
+
+  return db.one( sql, [ parseInt(book_id), parseInt(user_id) ] )
+}
+
+const createOwnedBook = (book_id, user_id) => {
+  const sql = `INSERT INTO owned_books( book_id, user_id, created_at ) VALUES ( $1, $2, now() ) RETURNING *`
+  console.log( 'createOwnedBook', book_id, user_id )
+
+  return db.one( sql, [ parseInt(book_id), parseInt(user_id) ] )
 }
 
 module.exports = {
   User, 
-  createOwnedBook,
-  createWantedBook
+  createBook,
+  createWantedBook,
+  createOwnedBook
 };
 
