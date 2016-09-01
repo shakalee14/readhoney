@@ -22,7 +22,7 @@ router.get( '/delete/:id', (request, response, next) => {
 
   database.deleteBook( request.params.id )
   .then( book => response.redirect('/'))
-  .catch( error => response.send({error, message: 'did not delete'}))
+  .catch( error => response.send({error, message: error.message}))
 
 })
 

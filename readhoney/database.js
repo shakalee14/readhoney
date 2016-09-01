@@ -55,7 +55,7 @@ const getBookById = ( book_id) => {
 }
 
 const deleteBook = (book_id) => {
-  const sql = `DELETE FROM books WHERE books.id=$1`
+  const sql = `DELETE FROM books WHERE books.id=$1 RETURNING *`
 
   return db.one(sql, [book_id])
 }
