@@ -9,7 +9,7 @@ block content
   ul
     for book in books
       li 
-        a(href='/book/:id'+book.title) #{book.title} 
+        a(href='/book/'+book.id) #{book.title} 
       li By #{book.author}
       br
                 

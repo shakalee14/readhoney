@@ -25,8 +25,14 @@ router.get('/', (request, response, next) => {
 })
 
 router.get('/:id', (request, response, next) => {
+  console.log('params.id', request.params.id)
+  console.log('body', request.body.id)
+  console.log('query.id', request.query.id)
+  console.log('query', request.query)
+    console.log('params', request.params)
+
   database.getBookById( request.params.id )
-    .then( book => response.render('details', {books: books}))
+    .then( book => response.render('details', { book}))
     .catch(error => response.send ({error, message: 'no book detail showing'}))
 })
 

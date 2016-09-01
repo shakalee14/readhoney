@@ -6,10 +6,13 @@ block content
   br
   h2 More about ...
 
-
-    //- ol
-    //-   for book in books
-    //-     li #{book.title}
+  h3= book.title
+  h5= book.author
+  h5= book.image_url
+ 
+  //- ol
+  //-   for id in books
+  //-     li #{book.title}
     //- li #{book.author}
     //- li #{book.image_url}
 
