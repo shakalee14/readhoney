@@ -25,25 +25,11 @@ router.get('/', (request, response, next) => {
 })
 
 router.get('/:id', (request, response, next) => {
-  console.log('params.id', request.params.id)
-  console.log('body', request.body.id)
-  console.log('query.id', request.query.id)
-  console.log('query', request.query)
-    console.log('params', request.params)
 
-  database.getBookById( request.params.id )
+    database.getBookById( request.params.id )
     .then( book => response.render('details', { book}))
     .catch(error => response.send ({error, message: 'no book detail showing'}))
 })
-
-// router.get('/details/:id', (request, response, next) => {
-//   database.getAllBooks()
-//     .then( books => response.render ('details', { books:books }))
-//     .catch(error => response.send ({error, message: 'no details showing'}))
-   
-//     // response.render('booklisting');
-// })
-
 
 
 router.post( '/book', (request, response, next) => {
@@ -56,6 +42,13 @@ router.post( '/book', (request, response, next) => {
     .then( book_id => database.createOwnedBook( book_id.id, id ))
     .then( result => response.redirect( '/' ) )
     .catch( error => response.send({ message: error.message }))
+})
+
+router.get( '/delete/:id', (request, response, next) => {
+  database.deleteBook( request.params.id )
+  .then( result => response.send({}))
+  .catch( error => response.send({error, message: 'did not delete'}))
+
 })
 
 module.exports = router;

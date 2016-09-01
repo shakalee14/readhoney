@@ -1,7 +1,6 @@
 extends layouts/layout
 
 block content
-  h1= book.title
   h1 Read Honey
   br
   h2 More about ...
@@ -9,18 +8,8 @@ block content
   h3= book.title
   h5= book.author
   h5= book.image_url
+  
+  form.form-horizontal(method='get' id='delete-form' action=`/books/delete/${book.id}`)
+    input.form-control(type='submit' value='Delete Book')
+
  
-  //- ol
-  //-   for id in books
-  //-     li #{book.title}
-    //- li #{book.author}
-    //- li #{book.image_url}
-
-
-
-  //- ul
-  //-   for book in books
-  //-     li 
-  //-       a(href='/book/details') #{book.title} 
-  //-     li By #{book.author}
-  //-     br
