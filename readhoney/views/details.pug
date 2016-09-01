@@ -1,0 +1,21 @@
+extends layouts/layout
+
+block content
+  h1= book.title
+  h1 Read Honey
+  h2 More about ...
+
+    ol
+      for book in books
+        li #{book.title}
+    //- li #{book.author}
+    //- li #{book.image_url}
+
+
+
+  //- ul
+  //-   for book in books
+  //-     li 
+  //-       a(href='/book/details') #{book.title} 
+  //-     li By #{book.author}
+  //-     br
