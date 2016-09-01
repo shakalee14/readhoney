@@ -26,7 +26,7 @@ router.get('/', (request, response, next) => {
 
 router.get('/:id', (request, response, next) => {
   database.getBookById( request.params.id )
-    .then( book => response.render('details', {book: book}))
+    .then( book => response.render('details', {books: books}))
     .catch(error => response.send ({error, message: 'no book detail showing'}))
 })
 

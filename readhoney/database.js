@@ -51,7 +51,7 @@ const getBookById = ( attributes ) => {
   attributes.author,
   attributes.image_url
   ]
-  return db.oneOrNone( sql, [variables])
+  return db.one( sql, [variables])
 }
 
 module.exports = {
