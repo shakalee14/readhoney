@@ -4,7 +4,7 @@ block content
   h1= title
   h1 Book Share Forms
 
-  div What Book Do You Want?
+  div Create a Bookshare
    form(name="wantedbook", action="/book/book", method="post")
       div
         label(for="title") Title
@@ -15,16 +15,17 @@ block content
         input(type="text", name="author")
 
       div
-        label(for="image_url") Image URL
+        label(for="image_url") Image Url 
         input(type="text", name="image_url")
+
+      div
+        label Do You Want this Book (Check Box for yes and Unchecked for no)
+        input(type="radio", name="wanted", value="false")
 
       div
         input(type="submit", value="Creatya book")
   
-  //- div What Book Do You Want to Loan?
-  //-  form(name="ownedbook", action="/book/book", method="post")
-  //-     input(type="text", name="title")
-      
-  //-     input(type="text", name="author")
-    
-  //-     input(type="submit", value="Givea book")
+
+      h2 Bookshare Explanation
+        p What is a wanted bookshare?
+        p What is a owned bookshare?

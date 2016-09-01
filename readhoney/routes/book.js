@@ -18,6 +18,20 @@ router.get('/booklisting', (request, response, next) => {
 
 })
 
+router.get('/owned', (request, response, next) => {
+  database.getOwnedBooks()
+    .then( books => response.render ('owned', { books:books }))
+    .catch(error => response.send ({error, message: 'no owned'}))
+
+})
+
+router.get('/wanted', (request, response, next) => {
+  database.getWantedBooks()
+    .then( books => response.render ('wanted', { books:books }))
+    .catch(error => response.send ({error, message: 'no wanted'}))
+
+})
+
 router.get( '/delete/:id', (request, response, next) => {
 
   database.deleteBook( request.params.id )
@@ -44,13 +58,14 @@ router.post( '/book', (request, response, next) => {
   // debug( 'User Info', request.user )
 
   const { id } = request.user
-  const { title, author, image_url } = request.body
+  const { title, author, image_url, wanted } = request.body
   
-  database.createBook( title, author, image_url )
+  database.createBook( title, author, image_url, wanted )
     .then( book_id => database.createOwnedBook( book_id.id, id ))
     .then( result => response.redirect( '/' ) )
     .catch( error => response.send({ message: error.message }))
 })
+
 
 
 module.exports = router;

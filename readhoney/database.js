@@ -19,10 +19,10 @@ const User = {
   }
 }
 
-const createBook = (title, author, image) => {
-  const sql = `INSERT INTO books( title, author, image_url ) VALUES ( $1, $2, $3 ) RETURNING id`
+const createBook = (title, author, image, wanted) => {
+  const sql = `INSERT INTO books( title, author, wanted, image_url) VALUES ( $1, $2, $3, $4) RETURNING id`
 
-  return db.one( sql, [title, author, image] )
+  return db.one( sql, [title, author, image, wanted] )
 }
 
 const createWantedBook = (book_id, user_id) => {
@@ -42,6 +42,15 @@ const getAllBooks = () => {
   return db.any( 'SELECT * FROM books')
 }
 
+const getOwnedBooks = () => {
+  return db.any ( 'SELECT * FROM books WHERE wanted=FALSE')
+}
+
+const getWantedBooks = () => {
+  return db.any ( 'SELECT * FROM books WHERE wanted=TRUE')
+}
+
+
 const getBookById = ( book_id) => {
   const sql = `SELECT * FROM books WHERE books.id=$1`
 
@@ -60,6 +69,18 @@ const deleteBook = (book_id) => {
   return db.one(sql, [book_id])
 }
 
+// const wantedBook = ( book_id ) => {
+//   const sql = ` UPDATE books SET wanted=true WHERE id=$1`
+
+//   return db.oneOrNone(sql, [book_id])
+// }
+
+// const ownedBook = ( book_id ) => {
+//   const sql = ` UPDATE books SET wanted=false WHERE id=$1`
+
+//   return db.oneOrNone(sql, [book_id])
+// }
+
 
 module.exports = {
   User, 
@@ -68,6 +89,10 @@ module.exports = {
   getBookById,
   createWantedBook,
   createOwnedBook,
-  deleteBook
+  deleteBook,
+  getWantedBooks,
+  getOwnedBooks,
+  // wantedBook,
+  // ownedBook,
 };
 
