@@ -26,11 +26,30 @@ const authOptions = {
   
 // });
 
+
+router.get('/booklisting', (request, response, next) => {
+  database.getAllBooks()
+    .then( books => response.render ('booklisting', { books:books }))
+    .catch(error => response.send ({error, message: 'no books showing'}))
+   
+    // response.render('booklisting');
+})
+
 router.get('/', (request, response, next) => {
   debug( 'User Info', request.user )
 
   response.render('book');
 })
+
+router.get('/details:id', (request, response, next) => {
+  database.getAllBooks()
+    .then( books => response.render ('details', { books:books }))
+    .catch(error => response.send ({error, message: 'no details showing'}))
+   
+    // response.render('booklisting');
+})
+
+
 
 router.post( '/book', (request, response, next) => {
   debug( 'User Info', request.user )

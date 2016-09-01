@@ -38,10 +38,15 @@ const createOwnedBook = (book_id, user_id) => {
   return db.one( sql, [ parseInt(book_id), parseInt(user_id) ] )
 }
 
+const getAllBooks = () => {
+  return db.any( 'SELECT * FROM books')
+}
+
 module.exports = {
   User, 
   createBook,
   createWantedBook,
-  createOwnedBook
+  createOwnedBook,
+  getAllBooks
 };
 

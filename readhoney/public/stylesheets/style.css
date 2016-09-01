@@ -8,3 +8,9 @@ body {
 a {
   color: #00B7FF;
 }
+
+.logout {
+  top: 10px;
+  right: 10px;
+  position: fixed;
+}
