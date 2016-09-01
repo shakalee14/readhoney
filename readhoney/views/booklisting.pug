@@ -6,27 +6,17 @@ block content
 
   a(href='/') Home
 
-   //- //search 
-
-  h2
-    ul Wanted Bookshares
-  h4
-  for book in books 
-  
-    li Title
-    li Author
-    li img_url
-    a(href='/') Details
-
-  h2
-    ul Owned Bookshares
-  h4  
-  for book in books 
-    li Title
-    li Author
-    li img_url
-    a(href='/') Details
+  ul
+    for book in books
+      li 
+        a(href='/book/details') #{book.title} 
+        div
+      li #{book.author}
+        div
+      li #{book.img_url}
+        div
+      li
 
 
-    
-  a.logout(href='/logout') Logout 
+
+
