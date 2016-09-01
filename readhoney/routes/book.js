@@ -33,7 +33,7 @@ router.get('/:id', (request, response, next) => {
 
 
 router.post( '/book', (request, response, next) => {
-  debug( 'User Info', request.user )
+  // debug( 'User Info', request.user )
 
   const { id } = request.user
   const { title, author, image_url } = request.body
@@ -44,9 +44,10 @@ router.post( '/book', (request, response, next) => {
     .catch( error => response.send({ message: error.message }))
 })
 
-router.get( '/delete/:id', (request, response, next) => {
+router.get( '/delete', (request, response, next) => {
+
   database.deleteBook( request.params.id )
-  .then( result => response.send({}))
+  .then( book => response.render('booklisting', { book }))
   .catch( error => response.send({error, message: 'did not delete'}))
 
 })

@@ -9,7 +9,7 @@ block content
   h5= book.author
   h5= book.image_url
   
-  form.form-horizontal(method='get' id='delete-form' action=`/books/delete/${book.id}`)
-    input.form-control(type='submit' value='Delete Book')
+  form(name='delete', id='delete-form', action='/book/delete', method='get')
+    input(type='submit' value='Delete Book')
 
  
