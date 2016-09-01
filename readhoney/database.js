@@ -42,11 +42,24 @@ const getAllBooks = () => {
   return db.any( 'SELECT * FROM books')
 }
 
+const getBookById = ( attributes ) => {
+  const sql = `SELECT id FROM books WHERE id=$1 RETURNING title `
+
+  const variables = [
+  attributes.id, 
+  attributes.title,
+  attributes.author,
+  attributes.image_url
+  ]
+  return db.oneOrNone( sql, [variables])
+}
+
 module.exports = {
   User, 
   createBook,
   createWantedBook,
   createOwnedBook,
-  getAllBooks
+  getAllBooks,
+  getBookById
 };
 

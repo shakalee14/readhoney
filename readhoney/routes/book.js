@@ -11,28 +11,11 @@ const authOptions = {
   failureRedirect: '/book/landing'
 }
 
-/* GET home page. */
-// if user loggedin devon suggestion
-
-// router.get('/', function(req, res, next) {
-//   Promise.all([wanted_books.all(), owned_books.all()])
-//     .then( results => {
-//       const [ wbooks, obooks] = results
-//       res.render('landing', {results})
-//     })
-//   res.render( 'login');
-
-//   return;
-  
-// });
-
-
 router.get('/booklisting', (request, response, next) => {
   database.getAllBooks()
     .then( books => response.render ('booklisting', { books:books }))
     .catch(error => response.send ({error, message: 'no books showing'}))
-   
-    // response.render('booklisting');
+
 })
 
 router.get('/', (request, response, next) => {
@@ -41,13 +24,19 @@ router.get('/', (request, response, next) => {
   response.render('book');
 })
 
-router.get('/details:id', (request, response, next) => {
-  database.getAllBooks()
-    .then( books => response.render ('details', { books:books }))
-    .catch(error => response.send ({error, message: 'no details showing'}))
-   
-    // response.render('booklisting');
+router.get('/:id', (request, response, next) => {
+  database.getBookById( request.params.id )
+    .then( book => response.render('details', {book: book}))
+    .catch(error => response.send ({error, message: 'no book detail showing'}))
 })
+
+// router.get('/details/:id', (request, response, next) => {
+//   database.getAllBooks()
+//     .then( books => response.render ('details', { books:books }))
+//     .catch(error => response.send ({error, message: 'no details showing'}))
+   
+//     // response.render('booklisting');
+// })
 
 
 
