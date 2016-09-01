@@ -1,10 +1,15 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: black;
-  color: white;
+  font: 16px "Lobster", Helvetica, Arial, sans-serif;
+  background-color: #ffbf00;
+  color:  #a67c00;
 }
 
 a {
+  font-size: 20px;
   color: #00B7FF;
+}
+
+h1 {
+  font-size: 30px;
 }
