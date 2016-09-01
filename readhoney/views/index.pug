@@ -2,16 +2,17 @@
 extends layouts/layout
 
 block content
-  h1= title
+  div
+    a(href='/book') Create a Book Share
+  div
+    a(href='/logout') Logout
+
   h1 Welcome to #{title}
 
-  a(href='/book') Create a Book Share 
-  
-  div
-    
-  a(href='/logout') Logout 
+    img(src ='http://pngimg.com/upload/book_PNG2115.png')
 
- 
+
+
 
 //-     extends ../layouts/layout
 

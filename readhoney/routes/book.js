@@ -32,6 +32,24 @@ router.get('/', (request, response, next) => {
   response.render('book');
 })
 
+router.get('/book', (request, response, next) => {
+  db.getAllBooks()
+    .then( books => {
+      response.render('listing', {
+        books: books
+     })
+  })
+  .catch( error => {
+    response.send('did not display books')
+  })
+})
+
+// router.get ('/book', function (request, response) {
+//   connection.query('SELECT * FROM wanted_books', function (error, rows){
+//     response.render('wanted_books', {wanted_books: rows});
+//   });
+// });
+
 router.post( '/book', (request, response, next) => {
   debug( 'User Info', request.user )
 
@@ -43,5 +61,6 @@ router.post( '/book', (request, response, next) => {
     .then( result => response.redirect( '/' ) )
     .catch( error => response.send({ message: error.message }))
 })
+
 
 module.exports = router;

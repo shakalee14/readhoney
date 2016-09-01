@@ -1,3 +1,8 @@
 extends layouts/layout
 
-h1 LISTING
+block content
+
+h1 BOOK LISTING PAGE
+
+for book in books 
+  span= books.title
