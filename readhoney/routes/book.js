@@ -18,6 +18,14 @@ router.get('/booklisting', (request, response, next) => {
 
 })
 
+router.get( '/delete/:id', (request, response, next) => {
+
+  database.deleteBook( request.params.id )
+  .then( book => response.redirect('/'))
+  .catch( error => response.send({error, message: 'did not delete'}))
+
+})
+
 router.get('/', (request, response, next) => {
   debug( 'User Info', request.user )
 
@@ -44,12 +52,5 @@ router.post( '/book', (request, response, next) => {
     .catch( error => response.send({ message: error.message }))
 })
 
-router.get( '/delete', (request, response, next) => {
-
-  database.deleteBook( request.params.id )
-  .then( book => response.render('booklisting', { book }))
-  .catch( error => response.send({error, message: 'did not delete'}))
-
-})
 
 module.exports = router;
