@@ -6,6 +6,10 @@
     "start": "DEBUG=readhoney:* nodemon ./bin/www",
     "babel-node": "babel-node --preset=es2015"
   },
+ "keywords": [
+    "example",
+    "heroku"
+  ],
   "dependencies": {
     "bcrypt": "^0.8.7",
     "body-parser": "~1.15.1",
