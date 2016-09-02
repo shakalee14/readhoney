@@ -10,6 +10,10 @@
     "example",
     "heroku"
   ],
+  "engines": {
+    "node": "4.1.1"
+  },
+  
   "dependencies": {
     "bcrypt": "^0.8.7",
     "body-parser": "~1.15.1",
