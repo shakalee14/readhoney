@@ -69,4 +69,3 @@ app.use(function(err, request, response, next) {
 
 
 module.exports = app;
-Contact GitHub API Training Shop Blog About
