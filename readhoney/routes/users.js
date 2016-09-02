@@ -25,15 +25,20 @@ router.post ( '/signup', (request, response, next) => {
   User.createOne( email, password)
     .then(user => {
       request.login({id: user.id, email }, error => {
-        if( error ){
-          next( error )
+        if (error){
+          response.render('error', { 
+            error: error
+          })
+        }else{
+          response.redirect('/')
         }
 
-        response.redirect('/')
       })
     })
     .catch( error => {
-      response.render( 'auth/signup', { message: 'That email address is not available'})
+      response.render('error', { 
+        error: error
+      })
     })
 })
 
