@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./readhoney/bin/www",
-    "babel-node": "babel-node --preset=es2015"
+    "start": "node ./dist/bin/www",
+    "build": "babel ./readhoney -d ./dist --copy-files",
+    "heroku-postbuild": "npm run build"
   },
 
  "keywords": [
