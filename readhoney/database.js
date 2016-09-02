@@ -19,10 +19,10 @@ const User = {
   }
 }
 
-const createBook = (title, author, image) => {
-  const sql = `INSERT INTO books( title, author, image_url ) VALUES ( $1, $2, $3 ) RETURNING id`
+const createBook = (title, author, image, wanted) => {
+  const sql = `INSERT INTO books( title, author, wanted, image_url) VALUES ( $1, $2, $3, $4) RETURNING id`
 
-  return db.one( sql, [title, author, image] )
+  return db.one( sql, [title, author, image, wanted] )
 }
 
 const createWantedBook = (book_id, user_id) => {
@@ -38,15 +38,67 @@ const createOwnedBook = (book_id, user_id) => {
   return db.one( sql, [ parseInt(book_id), parseInt(user_id) ] )
 }
 
-const getAllBooks = ( book ) => {
-  return db.any('SELECT * FROM books')
+const getAllBooks = () => {
+  return db.any( 'SELECT * FROM books')
 }
 
+const getOwnedBooks = () => {
+  return db.any ( 'SELECT * FROM books WHERE wanted=FALSE')
+}
+
+const getWantedBooks = () => {
+  return db.any ( 'SELECT * FROM books WHERE wanted=TRUE')
+}
+
+
+const getBookById = ( book_id) => {
+  const sql = `SELECT * FROM books WHERE books.id=$1`
+
+  // const variables = [
+  // attributes.id,
+  // attributes.title,
+  // attributes.author,
+  // attributes.image_url
+  // ]
+  return db.one( sql, [book_id] )
+}
+
+const deleteBook = (book_id) => {
+  const sql = `DELETE FROM books WHERE books.id=$1 RETURNING *`
+
+  return db.one(sql, [book_id])
+}
+
+const updateBook = (id, title, author, image_url) => {
+  const sql = `UPDATE books SET title=$1, author=$2, image_url=$3 WHERE id=$4`
+
+  return db.none( sql, [title, author, image_url, id] )
+}
+
+// const wantedBook = ( book_id ) => {
+//   const sql = ` UPDATE books SET wanted=true WHERE id=$1`
+
+//   return db.oneOrNone(sql, [book_id])
+// }
+
+// const ownedBook = ( book_id ) => {
+//   const sql = ` UPDATE books SET wanted=false WHERE id=$1`
+
+//   return db.oneOrNone(sql, [book_id])
+// }
+
+
 module.exports = {
-  User, 
+  User,
   createBook,
+  getAllBooks,
+  getBookById,
   createWantedBook,
   createOwnedBook,
-  getAllBooks
+  deleteBook,
+  getWantedBooks,
+  getOwnedBooks,
+  updateBook
+  // wantedBook,
+  // ownedBook,
 };
-
