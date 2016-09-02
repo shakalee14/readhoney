@@ -8,8 +8,13 @@ block content
   h3= book.title
   h5= book.author
   h5= book.image_url
+  a(href=`/book/edit/`+book.id) Edit Book Details
+  br
   
   form(name='delete', id='delete-form', action='/book/delete/'+book.id, method='get')
     input(type='submit' value='Delete Book')
+  
+
+
 
  

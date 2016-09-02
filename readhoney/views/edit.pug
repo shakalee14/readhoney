@@ -1,6 +1,8 @@
 extends layouts/layout
 
 block content
+
+  h1 Edit Book Details
   form(method='post', action=`/book/update/${book.id}`)
     div
       label(for='title') Title
