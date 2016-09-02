@@ -1,0 +1,20 @@
+extends layouts/layout
+
+block content
+  script(src="https://code.jquery.com/jquery-1.11.3.js")
+  script(src="../fuzzy.js")
+  
+  h1= title
+  h1 Booklisting 
+
+  input#search.search.fuzzy(type="text", class="search")
+
+
+  ul
+    for book in books
+      li 
+        a(href='/book/'+book.id) #{book.title} 
+      li By #{book.author}
+      //- li Created by #{owned_book.user_id}
+      br
+                
