@@ -6,11 +6,13 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const logout = require('express-passport-logout');
+const fuzzy  = require('fuzzy');
 
 const routes = require('./routes/index');
 const users = require('./routes/users');
 const book = require('./routes/book');
 const passport = require('./passport');
+
 
 
 

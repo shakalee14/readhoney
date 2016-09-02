@@ -4,6 +4,29 @@ block content
   h1= title
   h1 Booklisting 
 
+  input(type="text", id="search", class="search")
+  //- script(src="https://code.jquery.com/jquery-1.11.3.js")
+  //- script(src="../fuzzy.js")
+
+  //- script(type="text/javascript")  
+
+  //-   const searchAllBooks = () => {
+  //-   let search = $('#search').val(); }
+
+  //-   let filtered = fuzzy.filter(search, book, options);
+
+  //-   let newFilteredBooks = filtered.map( (el) => { return li + el.string }) 
+
+  //-    $('#books').html(newFilteredBooks.join(''));
+  //-   }
+
+  //-   $( () => {
+  //-     searchAllBooks();
+
+  //-     $('#search').keyup(searchAllBooks)
+  //-   });
+
+
   ul
     for book in books
       li 
