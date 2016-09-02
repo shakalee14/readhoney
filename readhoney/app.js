@@ -6,14 +6,12 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const logout = require('express-passport-logout');
+const fuzzy  = require('fuzzy');
 
 const routes = require('./routes/index');
 const users = require('./routes/users');
-const books = require('./routes/book');
+const book = require('./routes/book');
 const passport = require('./passport');
-
-
-
 
 const app = express();
 
@@ -34,7 +32,7 @@ app.use(passport.session());
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/book', books);
+app.use('/book', book);
 
 app.get('/logout', logout());
 
@@ -71,3 +69,4 @@ app.use(function(err, request, response, next) {
 
 
 module.exports = app;
+Contact GitHub API Training Shop Blog About
