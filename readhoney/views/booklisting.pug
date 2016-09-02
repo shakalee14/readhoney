@@ -7,8 +7,9 @@ block content
   h1= title
   h1 Booklisting 
 
-  input#search.search.fuzzy(type="text", class="search")
-
+  form(method='get')
+    input#search.search.fuzzy(type="text", class="search", name='q')
+    button(type='submit') Search
 
   ul
     for book in books

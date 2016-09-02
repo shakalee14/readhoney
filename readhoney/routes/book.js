@@ -12,9 +12,17 @@ const authOptions = {
 }
 
 router.get('/booklisting', (request, response, next) => {
-  database.getAllBooks()
-    .then( books => response.render ('booklisting', { books:books }))
-    .catch(error => response.send ({error, message: 'no books showing'}))
+  const { q: query } = request.query
+
+  if( query === undefined ) {
+    database.getAllBooks()
+      .then( books => response.render ('booklisting', { books }))
+      .catch(error => response.send ({error, message: 'no books showing'}))
+  } else {
+    database.search( query )
+      .then( books => response.render ('booklisting', { books }))
+      .catch(error => response.send ({error, message: 'no books showing'}))
+  }
 })
 
 router.get('/owned', (request, response, next) => {
