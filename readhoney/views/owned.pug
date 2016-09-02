@@ -1,0 +1,12 @@
+extends layouts/layout
+
+block content
+  h1= title
+  h1 Owned Bookshares 
+
+  ul
+    for book in books
+      li 
+        a(href='/book/'+book.id) #{book.title} 
+      li By #{book.author}
+      br
