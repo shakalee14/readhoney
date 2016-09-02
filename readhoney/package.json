@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "DEBUG=readhoney:* node ./bin/www",
+    "start": "DEBUG=readhoney:* nodemon ./bin/www",
     "babel-node": "babel-node --preset=es2015"
   },
   "dependencies": {
@@ -13,9 +13,10 @@
     "cookie-parser": "~1.4.3",
     "debug": "^2.2.0",
     "express": "~4.13.4",
-    "express-session": "^1.14.1",
     "express-passport-logout": "^0.1.0",
+    "express-session": "^1.14.1",
     "faker": "^3.1.0",
+    "fuzzy": "^0.1.1",
     "morgan": "~1.7.0",
     "nodemon": "^1.10.2",
     "passport": "^0.3.2",
@@ -33,3 +34,4 @@
     "babel-watch": "^2.0.2"
   }
 }
+Contact GitHub API Training Shop Blog About
