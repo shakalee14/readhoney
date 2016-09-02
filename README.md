@@ -25,14 +25,14 @@ Creating this web application will provide exposure to:
 
 ## Specifications
 
-- [ ] Any user can add books into the system
+- [x] Any user can add books into the system
 - [ ] Users can fuzzy search to filter out results
-- [ ] Users can view book details on a book detail page, linked to from the listing or search pages
+- [x] Users can view book details on a book detail page, linked to from the listing or search pages
 - [X] All code submissions are peer reviewed via GitHub PR by at least two members of the team, and master is always in a stable state (tests passed, site functions)
 - [X] SQL database
 - [X] User Authentication
-- [ ] Only logged in users can CRUD for book entries 
-- [ ] Incorporate Test User Feedback 
+- [x] Only logged in users can CRUD for book entries 
+- [x] Incorporate Test User Feedback 
 - [ ] Deploy to Heroku
 - [x] The artifact produced is properly licensed, preferably with the [MIT license][mit-license].
 
