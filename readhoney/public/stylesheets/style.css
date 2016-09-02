@@ -1,13 +1,20 @@
 body {
   padding: 50px;
-  font: 16px "Lobster", Helvetica, Arial, sans-serif;
+  font: 14px "Lobster", Helvetica, Arial, sans-serif;
   background-color: #ffbf00;
-  color:  #a67c00;
+  color: #a67c00;
+  background-image: url('http://pngimg.com/upload/book_PNG2115.png')
 }
 
 a {
   font-size: 20px;
   color: #00B7FF;
+}
+
+.logout {
+  top: 10px;
+  right: 10px;
+  position: fixed;
 }
 
 h1 {
