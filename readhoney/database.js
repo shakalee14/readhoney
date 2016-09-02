@@ -42,6 +42,13 @@ const getAllBooks = () => {
   return db.any( 'SELECT * FROM books')
 }
 
+const search = searchTerm => {
+  const term = searchTerm.toLowerCase()
+  const sql = `SELECT * FROM books WHERE lower(title) LIKE '%${term}%' OR lower(author) LIKE '%${term}%'`
+
+  return db.any( sql )
+}
+
 const getOwnedBooks = () => {
   return db.any ( 'SELECT * FROM books WHERE wanted=FALSE')
 }
@@ -98,7 +105,8 @@ module.exports = {
   deleteBook,
   getWantedBooks,
   getOwnedBooks,
-  updateBook
+  updateBook,
+  search
   // wantedBook,
   // ownedBook,
 };
