@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "babel-node": "babel-node --preset=es2015",
+    "babel-node": "babel-node --preset=es2015"
   },
 
  "keywords": [
