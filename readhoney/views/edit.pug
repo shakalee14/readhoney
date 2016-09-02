@@ -1,0 +1,16 @@
+extends layouts/layout
+
+block content
+  form(method='post', action=`/book/update/${book.id}`)
+    div
+      label(for='title') Title
+      input(type='text', name='title', placeholder='Title', value=`${book.title}`)
+    div
+      label(for='author') Author
+      input(type='text', name='author', placeholder='Author', value=`${book.author}`)
+    div
+      label(for='image_url') Image URL
+      input(type='text', name='image_url', placeholder='Image URL', value=`${book.image_url}`)
+
+    div
+      button(type='submit') Update

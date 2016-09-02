@@ -55,7 +55,7 @@ const getBookById = ( book_id) => {
   const sql = `SELECT * FROM books WHERE books.id=$1`
 
   // const variables = [
-  // attributes.id, 
+  // attributes.id,
   // attributes.title,
   // attributes.author,
   // attributes.image_url
@@ -67,6 +67,12 @@ const deleteBook = (book_id) => {
   const sql = `DELETE FROM books WHERE books.id=$1 RETURNING *`
 
   return db.one(sql, [book_id])
+}
+
+const updateBook = (id, title, author, image_url) => {
+  const sql = `UPDATE books SET title=$1, author=$2, image_url=$3 WHERE id=$4`
+
+  return db.none( sql, [title, author, image_url, id] )
 }
 
 // const wantedBook = ( book_id ) => {
@@ -83,7 +89,7 @@ const deleteBook = (book_id) => {
 
 
 module.exports = {
-  User, 
+  User,
   createBook,
   getAllBooks,
   getBookById,
@@ -92,6 +98,7 @@ module.exports = {
   deleteBook,
   getWantedBooks,
   getOwnedBooks,
+  updateBook
   // wantedBook,
   // ownedBook,
 };

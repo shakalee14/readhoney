@@ -13,10 +13,6 @@ const users = require('./routes/users');
 const book = require('./routes/book');
 const passport = require('./passport');
 
-
-
-
-
 const app = express();
 
 // view engine setup
