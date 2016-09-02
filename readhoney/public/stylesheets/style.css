@@ -2,13 +2,18 @@ body {
   padding: 50px;
   font: 14px "Lobster", Helvetica, Arial, sans-serif;
   background-color: #ffbf00;
-  color: #a67c00;
+  color: #9B7400;
   background-image: url('http://pngimg.com/upload/book_PNG2115.png')
 }
 
 a {
   font-size: 20px;
-  color: #00B7FF;
+  color: #9B7400;
+}
+
+a:hover {
+  font-size: 20px;
+  color: black;
 }
 
 .logout {
@@ -19,4 +24,20 @@ a {
 
 h1 {
   font-size: 30px;
+}
+ul {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+
+}
+ul a {
+  font-size: 15px;
+  text-decoration: none;
+}
+
+li {
+  display: inline;
+  margin: 10px;
+  text-align: center;
 }
